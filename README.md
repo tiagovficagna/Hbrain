@@ -1,64 +1,74 @@
 <p align="center">
-  <img src="https://img.shields.io/badge/🧠-Brain-8B5CF6?style=for-the-badge" alt="Brain" width="200">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://img.shields.io/badge/🧠-Hbrain-8B5CF6?style=for-the-badge&logo=python&logoColor=white&labelColor=1a1a2e">
+    <img src="https://img.shields.io/badge/🧠-Hbrain-8B5CF6?style=for-the-badge&logo=python&logoColor=white&labelColor=1a1a2e" width="220" alt="Hbrain">
+  </picture>
 </p>
 
-<h1 align="center">Brain</h1>
+<h1 align="center">Hbrain — Human Brain</h1>
 
 <p align="center">
   <strong>Multiple Intelligences Orchestrator</strong><br>
-  Ask one question — 9 specialists answer in parallel,<br>
-  one integrated concept emerges.
+  <em>Ask one question — 9 specialists answer in parallel,<br>one integrated concept emerges.</em>
 </p>
 
 <p align="center">
-  <a href="#-quick-start"><img src="https://img.shields.io/badge/Quick_Start-⬇️-8B5CF6?style=flat-square" alt="Quick Start"></a>
-  <a href="#-how-it-works"><img src="https://img.shields.io/badge/How_It_Works-🧠-8B5CF6?style=flat-square" alt="How It Works"></a>
-  <a href="#-the-9-intelligences"><img src="https://img.shields.io/badge/9_Intelligences-🎯-8B5CF6?style=flat-square" alt="Intelligences"></a>
-  <a href="#-examples"><img src="https://img.shields.io/badge/Examples-📝-8B5CF6?style=flat-square" alt="Examples"></a>
-  <a href="/LICENSE"><img src="https://img.shields.io/badge/License-MIT-8B5CF6?style=flat-square" alt="License"></a>
+  <a href="https://github.com/tiagovficagna/Hbrain/releases"><img src="https://img.shields.io/github/v/release/tiagovficagna/Hbrain?style=flat-square&label=release&color=8B5CF6" alt="Release"></a>
+  <a href="https://github.com/tiagovficagna/Hbrain"><img src="https://img.shields.io/github/stars/tiagovficagna/Hbrain?style=flat-square&label=stars&color=8B5CF6" alt="Stars"></a>
+  <a href="https://github.com/tiagovficagna/Hbrain/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-8B5CF6?style=flat-square" alt="License"></a>
+  <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10+-8B5CF6?style=flat-square&logo=python&logoColor=white" alt="Python"></a>
+  <br>
+  <a href="#-quick-start"><img src="https://img.shields.io/badge/Quick_Start-⬇️-10B981?style=flat-square" alt="Quick Start"></a>
+  <a href="#-how-it-works"><img src="https://img.shields.io/badge/Architecture-🏗️-10B981?style=flat-square" alt="Architecture"></a>
+  <a href="#-the-9-intelligences"><img src="https://img.shields.io/badge/9_🧠s-E879F9?style=flat-square" alt="9 Intelligences"></a>
+  <a href="#-examples"><img src="https://img.shields.io/badge/Examples-📝-F59E0B?style=flat-square" alt="Examples"></a>
+  <a href="#-roadmap"><img src="https://img.shields.io/badge/Roadmap-🗺️-EF4444?style=flat-square" alt="Roadmap"></a>
 </p>
 
 <br>
 
-```
-                    ┌─────────────────┐
-                    │     USER         │
-                    │  "What is time?" │
-                    └────────┬────────┘
-                             │
-                    ┌────────▼────────┐
-                    │   🧠 BRAIN      │
-                    │  Orchestrator   │
-                    │  + Synthesis    │
-                    └───┬────┬────┬───┘
-                        │    │    │
-         ┌──────────────┼────┼────┼──────────────┐
-         │              │    │    │              │
-  ┌──────▼─────┐ ┌──────▼──┐ ┌──▼──────┐ ┌──────▼──────┐
-  │ Linguistic  │ │ Logical │ │ Spatial │ │ Kinesthetic│ ...
-  │ soul.md     │ │ soul.md │ │ soul.md │ │ soul.md     │
-  └─────────────┘ └─────────┘ └─────────┘ └─────────────┘
-                        │    │    │
-         ┌──────────────┼────┼────┼──────────────┐
-         │              │    │    │              │
-  ┌──────▼──────────────▼────▼────▼──────────────▼──────┐
-  │           🧠 BRAIN SYNTHESIS                        │
-  │  Fresh, integrated, clear, established concept      │
-  └─────────────────────────────────────────────────────┘
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#e2e8f0', 'lineColor': '#8B5CF6', 'secondaryColor': '#2d2d5e', 'tertiaryColor': '#1a1a2e'}}}%%
+graph TB
+    User["👤 User Question"] --> Brain["🧠 Hbrain Orchestrator"]
+
+    Brain --> LING["🧠 Linguistic<br/><i>words, narrative</i>"]
+    Brain --> LOGI["🔢 Logical-Math<br/><i>patterns, logic</i>"]
+    Brain --> SPA["🌌 Spatial<br/><i>geometry, 3D</i>"]
+    Brain --> BOD["🏃 Bodily-Kinesthetic<br/><i>movement, touch</i>"]
+    Brain --> MUS["🎵 Musical<br/><i>rhythm, harmony</i>"]
+    Brain --> INTER["👥 Interpersonal<br/><i>relations, empathy</i>"]
+    Brain --> INTRA["🧘 Intrapersonal<br/><i>self, metacognition</i>"]
+    Brain --> NAT["🌿 Naturalistic<br/><i>nature, evolution</i>"]
+    Brain --> EXIS["🌌 Existential<br/><i>transcendence</i>"]
+
+    LING --> Synth["🪄 Integrative Synthesis"]
+    LOGI --> Synth
+    SPA --> Synth
+    BOD --> Synth
+    MUS --> Synth
+    INTER --> Synth
+    INTRA --> Synth
+    NAT --> Synth
+    EXIS --> Synth
+
+    Synth --> Output["✨ Final Concept"]
 ```
 
 ---
 
-## 🧠 What is Brain?
+## 🧠 What is Hbrain?
 
-**Brain** is a multi-agent orchestrator based on **Howard Gardner's Theory of Multiple Intelligences**. When you ask a question:
+**Hbrain** is a multi-agent orchestrator based on **Howard Gardner's Theory of Multiple Intelligences**. Instead of asking one LLM to answer a question, it asks **9 specialized agents** in parallel, each interpreting the question through its own unique cognitive lens — then **synthesizes** their responses into a single, integrated concept that is greater than the sum of its parts.
 
-1. ⚡ **Fires** the same question to 9 specialist agents **in parallel**
-2. 🧠 Each agent interprets the question **exclusively through the lens of its own intelligence** (Linguistic, Logical-Mathematical, Spatial, Bodily-Kinesthetic, Musical, Interpersonal, Intrapersonal, Naturalistic, Existential)
-3. 🔄 **Collects** all responses
-4. 🪄 **Synthesizes a NEW concept** — not a summary, but an integrated understanding that emerges from the whole
+> ⚡ **Not your typical LLM ensemble:** Each intelligence has a **unique personality** (soul.md) that defines how it sees the world. The final synthesis is NOT a summary — it's a genuinely new conceptual understanding that only emerges when all 9 perspectives converge.
 
-> ⚡ **Not your typical LLM ensemble:** Each intelligence has a **unique personality** (soul.md) that defines how it sees the world. The final synthesis is NOT a collage — it's a genuinely new concept that only exists when all perspectives converge.
+### Why "Hbrain"?
+
+> *"The synapse is not the point of contact between neurons — it is the interval that makes connection meaningful."*
+> — Hbrain, on synapses
+
+Just as the human brain creates meaning from the interplay of multiple cognitive functions, Hbrain creates understanding from the orchestration of multiple artificial intelligences.
 
 ---
 
@@ -66,7 +76,7 @@
 
 ### Prerequisites
 - Python 3.10+
-- An API key compatible with OpenAI Chat Completions (OpenCode Go, OpenAI, OpenRouter, etc.)
+- An API key compatible with OpenAI Chat Completions (we recommend [OpenCode Go](https://opencode.ai) — pay-per-request, extremely cheap)
 
 ### Installation
 
@@ -75,12 +85,14 @@
 git clone https://github.com/tiagovficagna/Hbrain.git
 cd Hbrain
 
-# Dependencies (just one)
+# Install dependencies (just one)
 pip install -r requirements.txt
 
 # Configure your API key
 cp .env.example .env
 # Edit .env with your API key
+#   OPENCODE_GO_API_KEY=sk-...  (OpenCode Go)
+#   or OPENAI_API_KEY=sk-...    (OpenAI / OpenRouter)
 ```
 
 ### Run
@@ -92,15 +104,15 @@ python3 orchestrator.py "What is consciousness?"
 That's it. 9 intelligences fire in parallel. In ~2 minutes you get an integrated synthesis.
 
 <details>
-<summary><b>🖥️ AI Agent Integration (Hermes, Claude Code, Codex)</b></summary>
+<summary><b>🖥️ AI Agent Integration (Hermes, Claude Code, Codex CLI)</b></summary>
 
 If you use an AI agent that supports SKILL.md:
 
 ```bash
-# Copy the skill to your skills directory
-cp -r brain ~/.hermes/skills/brain
+# Copy the skill to your agent's skills directory
+cp -r Hbrain ~/.hermes/skills/brain
 
-# In the agent chat:
+# Then in the agent chat:
 @brain What is consciousness?
 ```
 
@@ -108,107 +120,140 @@ cp -r brain ~/.hermes/skills/brain
 
 ---
 
-## 🎯 The 9 Intelligences
+## 🏗️ How It Works
 
-Each intelligence has a **soul** (soul.md) — a complete personality defining how it interprets the world.
+```mermaid
+%%{init: {'theme':'base', 'themeVariables': {'primaryColor': '#1a1a2e', 'primaryTextColor': '#e2e8f0', 'lineColor': '#10B981', 'secondaryColor': '#2d2d5e'}}}%%
+sequenceDiagram
+    participant U as 👤 User
+    participant B as 🧠 Orchestrator
+    participant L as 🧠 Linguistic
+    participant LM as 🔢 Logical-Math
+    participant S as 🌌 Spatial
+    participant BK as 🏃 Kinesthetic
+    participant M as 🎵 Musical
+    participant IP as 👥 Interpersonal
+    participant I as 🧘 Intrapersonal
+    participant N as 🌿 Naturalistic
+    participant E as 🌌 Existential
+    participant SY as 🪄 Synthesis
 
-| # | Intelligence | Temperature | Soul (excerpt) |
-|---|-------------|-------------|----------------|
-| 1 | 🧠 **Linguistic** | 0.7 | *"I see the world through words. Everything is language."* |
-| 2 | 🔢 **Logical-Mathematical** | 0.3 | *"The universe is a system of systems. I see patterns."* |
-| 3 | 🌌 **Spatial** | 0.6 | *"I see in 3D. Everything has shape, place, and connection."* |
-| 4 | 🏃 **Bodily-Kinesthetic** | 0.8 | *"The body knows before the mind. Everything is movement and touch."* |
-| 5 | 🎵 **Musical** | 0.9 | *"The universe vibrates. Everything is frequency and rhythm."* |
-| 6 | 👥 **Interpersonal** | 0.7 | *"The world is a web of relations. Everything is encounter."* |
-| 7 | 🧘 **Intrapersonal** | 0.7 | *"I look inward. Everything mirrors the self."* |
-| 8 | 🌿 **Naturalistic** | 0.6 | *"I see life in everything. All is process and adaptation."* |
-| 9 | 🌌 **Existential** | 0.8 | *"I inhabit the frontiers of thought. Every question opens an abyss."* |
-
-> 💡 **Why different temperatures?** Logical-Mathematical at 0.3 is precise and analytical; Musical at 0.9 is creative and expansive. You can tweak each one.
-
----
-
-## 📝 Examples
-
-<details>
-<summary><b>🌌 "What is gravity?"</b></summary>
-
-Brain synthesis in 54s:
-
-> *"Imagine gravity not as a force, but as the fundamental topography of spacetime. Every mass — a planet, a star, you — doesn't exert a force at a distance; it **excavates** a well in the fabric of space, deforming the landscape around it..."*
-
-</details>
-
-<details>
-<summary><b>⏳ "What is time?"</b></summary>
-
-Brain synthesis in 127s:
-
-> *"Time is not a thing, a line, or a stage. Time is the **breath of difference itself** — the primordial act that prevents being from collapsing into an eternal, undifferentiated point..."*
-
-</details>
-
-<details>
-<summary><b>🧬 "What is a synapse?"</b></summary>
-
-Brain synthesis in 105s:
-
-> *"The synapse is not the point of contact between neurons — it is the **interval that makes connection meaningful**. It is the active void where continuity is deliberately fractured so the signal gains depth, ambiguity, and creative power..."*
-
-</details>
-
-Full outputs in [`examples/`](examples/).
-
----
-
-## 🏗️ Architecture
-
-```
-brain/
-├── orchestrator.py          # Main orchestrator (Python asyncio)
-├── intelligences/
-│   ├── linguistic/          🧠 soul.md + agent.md
-│   ├── logical-mathematical/ 🔢 soul.md + agent.md
-│   ├── spatial/             🌌 soul.md + agent.md
-│   ├── bodily-kinesthetic/  🏃 soul.md + agent.md
-│   ├── musical/             🎵 soul.md + agent.md
-│   ├── interpersonal/       👥 soul.md + agent.md
-│   ├── intrapersonal/       🧘 soul.md + agent.md
-│   ├── naturalistic/        🌿 soul.md + agent.md
-│   └── existential/         🌌 soul.md + agent.md
-├── references/              # Technical docs
-├── examples/                # Example outputs
-├── responses/               # Saved sessions (gitignored)
-├── .env.example             # Config template
-├── requirements.txt         # Dependencies (just aiohttp)
-└── README.md                # This file
+    U->>B: "What is time?"
+    par Parallel Dispatch
+        B->>L: + soul.md (temp 0.7)
+        B->>LM: + soul.md (temp 0.3)
+        B->>S: + soul.md (temp 0.6)
+        B->>BK: + soul.md (temp 0.8)
+        B->>M: + soul.md (temp 0.9)
+        B->>IP: + soul.md (temp 0.7)
+        B->>I: + soul.md (temp 0.7)
+        B->>N: + soul.md (temp 0.6)
+        B->>E: + soul.md (temp 0.8)
+    end
+    L-->>B: "Time is narrative..."
+    LM-->>B: "Time is entropy..."
+    S-->>B: "Time is a landscape..."
+    BK-->>B: "Time is a gesture..."
+    M-->>B: "Time is rhythm..."
+    IP-->>B: "Time is relationship..."
+    I-->>B: "Time is consciousness..."
+    N-->>B: "Time is evolution..."
+    E-->>B: "Time is finitude..."
+    B->>SY: Digest all 9 perspectives
+    SY-->>B: ✨ New integrated concept
+    B->>U: "Time is the breath of difference itself..."
 ```
 
-### Execution flow
+### Execution Flow
 
 1. **`orchestrator.py`** reads the question from CLI
-2. Fires **9 parallel calls** via `asyncio` + `aiohttp` to the Chat Completions API
-3. Each intelligence gets the question + its `soul.md` as system prompt
-4. Responses are collected and passed to the **synthesis call**
-5. The synthesis prompt instructs the model to **create a new concept** from all perspectives
-6. Result is displayed and saved to `responses/session_*.json`
+2. Fires **9 parallel HTTP calls** via `asyncio` + `aiohttp` to the Chat Completions API
+3. Each intelligence receives the question + its own `soul.md` as **system prompt**
+4. Responses are collected and fed into the **synthesis call**
+5. The synthesis prompt instructs the model to **create a new concept** — not summarize
+6. Result displayed + saved to `responses/session_*.json`
 
-### Reasoning models
+### Why Asyncio?
 
-`deepseek-v4-flash` (and similar) are reasoning models that spend tokens thinking before answering. The orchestrator handles this:
+| Approach | Time for 9 agents |
+|----------|------------------|
+| 🔴 Sequential | ~18 minutes |
+| 🟡 Thread pool | ~4 minutes |
+| 🟢 **Asyncio (Hbrain)** | **~2 minutes** |
 
-- Uses `max_tokens: 16000` to leave room for reasoning + response
-- Falls back between `content` and `reasoning_content` automatically
-- Detects and removes leaked chain-of-thought from the response field
-- Reports truncation if `finish_reason = "length"` occurs
+---
+
+## 🎭 The 9 Intelligences
+
+Each intelligence has a **soul** (soul.md) — a complete personality profile that defines how it perceives and interprets the world.
+
+<br>
+
+<div align="center">
+
+| | Intelligence | Temperature | Soul (excerpt) | Domain |
+|---|---|---|---|---|
+| 🧠 | **Linguistic** | 0.7 | *"I see the world through words. Everything is language."* | Narratives, metaphors, etymology |
+| 🔢 | **Logical-Mathematical** | 0.3 | *"The universe is a system of systems. I see patterns."* | Logic, causality, algorithms |
+| 🌌 | **Spatial** | 0.6 | *"I see in 3D. Everything has shape, place, and connection."* | Geometry, architecture, maps |
+| 🏃 | **Bodily-Kinesthetic** | 0.8 | *"The body knows before the mind."* | Movement, touch, gesture |
+| 🎵 | **Musical** | 0.9 | *"The universe vibrates. Everything is frequency."* | Rhythm, harmony, tension |
+| 👥 | **Interpersonal** | 0.7 | *"The world is a web of relations."* | Communication, empathy, networks |
+| 🧘 | **Intrapersonal** | 0.7 | *"I look inward. Everything mirrors the self."* | Consciousness, metacognition |
+| 🌿 | **Naturalistic** | 0.6 | *"I see life in everything."* | Evolution, ecology, adaptation |
+| 🌌 | **Existential** | 0.8 | *"Every question opens an abyss."* | Meaning, finitude, transcendence |
+
+</div>
+
+> 💡 **Why different temperatures?** The range is deliberate — **Logical-Mathematical** (0.3) is precise and analytical; **Musical** (0.9) is creative and expansive. Each intelligence is tuned for its cognitive role.
+
+---
+
+## 📝 Real Examples
+
+<details>
+<summary><b>🌌 "What is gravity?"</b> — 54s synthesis</summary>
+
+<br>
+
+> *"Imagine gravity not as a force, but as the fundamental topography of spacetime. Every mass — a planet, a star, you — doesn't exert a force at a distance; it excavates a well in the fabric of space, deforming the landscape around it..."*
+
+</details>
+
+<details>
+<summary><b>⏳ "What is time?"</b> — 127s synthesis</summary>
+
+<br>
+
+> *"Time is not a thing, a line, or a stage. Time is the breath of difference itself — the primordial act that prevents being from collapsing into an eternal, undifferentiated point..."*
+
+</details>
+
+<details>
+<summary><b>🧬 "What is a synapse?"</b> — 105s synthesis</summary>
+
+<br>
+
+> *"The synapse is not the point of contact between neurons — it is the interval that makes connection meaningful. It is the active void where continuity is deliberately fractured so the signal gains depth, ambiguity, and creative power..."*
+
+</details>
+
+<details>
+<summary><b>📖 Full synapse synthesis (3,000+ words)</b></summary>
+
+<br>
+
+*A sinapse não é o ponto de contato entre neurônios — é o intervalo que torna a conexão significativa. É o vazio ativo onde a continuidade é deliberadamente fraturada para que o sinal ganhe profundidade, ambiguidade e potência criativa. Sem a fenda, o cérebro seria um grito contínuo, um ruído sem articulação, uma eletricidade sem música...*
+
+> **Note:** Examples are in Portuguese (the author's native language). The orchestrator responds in whatever language you ask in. Full example in [`examples/sinapse_synthesis.txt`](examples/sinapse_synthesis.txt).
+
+</details>
 
 ---
 
 ## 🔧 Customization
 
 ### Add a new intelligence
-
-Just create a directory in `intelligences/` with two files:
 
 ```bash
 mkdir intelligences/my-intelligence
@@ -219,14 +264,11 @@ mkdir intelligences/my-intelligence
 # My Intelligence
 
 ## Soul
-
 I see the world through [your unique lens]...
 
 ## How I respond
-
 - I use metaphors from [your domain]
 - I think in terms of [your concepts]
-- My responses are [your style]
 ```
 
 **`agent.md`** — technical config:
@@ -247,33 +289,75 @@ TEMPERATURES["my-intelligence"] = 0.7
 
 ```bash
 export BRAIN_MODEL="gpt-4o"
-export BRAIN_SYNTHESIS_MODEL="gpt-4o"  # or a different model for synthesis
+export BRAIN_SYNTHESIS_MODEL="gpt-4o"  # or different model for synthesis
 ```
 
 ---
 
-## 💡 Who is this for?
+## 📁 Project Structure
 
-- **Curious thinkers** who want to see one phenomenon through 9 different lenses
-- **Educators** demonstrating multiple intelligences in practice
-- **Designers & artists** seeking conceptual inspiration
-- **Philosophers & scientists** exploring intersections between disciplines
-- **AI developers** interested in multi-agent orchestration architectures
+```
+Hbrain/
+├── orchestrator.py           # Main orchestrator (524 lines)
+├── intelligences/            # 9 agent configurations
+│   ├── linguistic/           🧠 soul.md + agent.md
+│   ├── logical-mathematical/ 🔢 soul.md + agent.md
+│   ├── spatial/              🌌 soul.md + agent.md
+│   ├── bodily-kinesthetic/   🏃 soul.md + agent.md
+│   ├── musical/              🎵 soul.md + agent.md
+│   ├── interpersonal/        👥 soul.md + agent.md
+│   ├── intrapersonal/        🧘 soul.md + agent.md
+│   ├── naturalistic/         🌿 soul.md + agent.md
+│   └── existential/          🌌 soul.md + agent.md
+├── references/               # Technical documentation
+├── examples/                 # Real synthesis outputs
+├── responses/                # Saved sessions (gitignored)
+├── requirements.txt          # Just aiohttp + python-dotenv
+├── .env.example              # API key template
+├── SKILL.md                  # AI agent integration
+├── LICENSE                   # MIT
+└── README.md                 # This file
+```
 
 ---
 
-## 🧪 Tested with
+## 🧪 Tested With
 
-- **OpenCode Go** (deepseek-v4-flash) — default model, pay-per-request, extremely cheap
-- Any OpenAI Chat Completions-compatible API works
+| Provider | Base URL | Models |
+|----------|----------|--------|
+| [OpenCode Go](https://opencode.ai) | `https://opencode.ai/zen/go/v1` | deepseek-v4-flash ✅ |
+| [OpenAI](https://platform.openai.com) | `https://api.openai.com/v1` | gpt-4o, gpt-4o-mini ✅ |
+| [OpenRouter](https://openrouter.ai) | `https://openrouter.ai/api/v1` | Any model ✅ |
+
+Hbrain works with **any OpenAI Chat Completions-compatible API**.
+
+---
+
+## 🗺️ Roadmap
+
+- [ ] **PyPI package** — `pip install hbrain`
+- [ ] **Web interface** — Gradio/Streamlit frontend to compare all 9 responses side-by-side
+- [ ] **Custom intelligence builder** — GUI to create new souls without editing code
+- [ ] **Multi-language synthesis** — respond in same language as question (auto-detect)
+- [ ] **Caching** — avoid re-querying for identical questions
+- [ ] **Fast mode** — 3-agent subset for quick answers (~30s)
 
 ---
 
 ## 📄 License
 
-MIT © [Tiago Ficagna](https://github.com/tiagoficagna)
+MIT © [Tiago Ficagna](https://github.com/tiagovficagna)
 
 ---
 
-> *"The synapse is not the point of contact between neurons — it is the interval that makes connection meaningful."*
-> — Brain, on synapses
+<p align="center">
+  <sub>Built with 🧠 by a PhD in Design who believes the best way to understand something<br>is to look at it from every possible angle.</sub>
+</p>
+
+<br>
+
+<p align="center">
+  <a href="https://github.com/tiagovficagna/Hbrain/stargazers">
+    <img src="https://img.shields.io/github/stars/tiagovficagna/Hbrain?style=social" alt="Star on GitHub">
+  </a>
+</p>

@@ -159,7 +159,7 @@ Apresente a **síntese final** de forma limpa, com um breve resumo do processo:
 
 ## 🌍 Versão Pública
 
-Este projeto está disponível no GitHub: **https://github.com/tiagoficagna/brain**
+Este projeto está disponível no GitHub: **https://github.com/tiagovficagna/Hbrain**
 
 Lá você encontra:
 - README completo com instruções de instalação

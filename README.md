@@ -72,8 +72,8 @@
 
 ```bash
 # Clone
-git clone https://github.com/tiagoficagna/brain.git
-cd brain
+git clone https://github.com/tiagovficagna/Hbrain.git
+cd Hbrain
 
 # Dependencies (just one)
 pip install -r requirements.txt

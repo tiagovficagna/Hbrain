@@ -104,6 +104,27 @@ python3 orchestrator.py "What is consciousness?"
 That's it. 9 intelligences fire in parallel. In ~2 minutes you get an integrated synthesis.
 
 <details>
+<summary><b>🏠 Running locally with LM Studio (no API key needed)</b></summary>
+
+You can run Hbrain entirely offline using [LM Studio](https://lmstudio.ai) with a local model:
+
+```bash
+# 1. Download Qwen3 1.7B or any small model in LM Studio
+# 2. Start the local server in LM Studio (Settings → Developer → Start Server)
+# 3. Run Hbrain with the local script:
+bash run_local.sh "What is gravity?"
+```
+
+The `run_local.sh` script configures everything automatically for local execution. By default it uses **sequential mode** (`BRAIN_SEQUENTIAL=true`) since small local models can't parallelize effectively.
+
+| Mode | Agents | Time (Qwen3 1.7B) | Command |
+|------|--------|-------------------|---------|
+| 🐢 Sequential | 9 agents | ~6-8 min | `bash run_local.sh "question"` |
+| 🐇 2-agent parallel | 2 agents | ~1.5 min | `BRAIN_AGENTS="linguistic,existential" bash run_local.sh "question"` |
+
+</details>
+
+<details>
 <summary><b>🖥️ AI Agent Integration (Hermes, Claude Code, Codex CLI)</b></summary>
 
 If you use an AI agent that supports SKILL.md:
@@ -175,13 +196,15 @@ sequenceDiagram
 
 ### Why Asyncio?
 
-| Approach | Time for 9 agents |
-|----------|------------------|
-| 🔴 Sequential | ~18 minutes |
-| 🟡 Thread pool | ~4 minutes |
-| 🟢 **Asyncio (Hbrain)** | **~2 minutes** |
+| Approach | Cloud API (deepseek) | Local 1.7B parallel | Local 1.7B sequential |
+|----------|---------------------|---------------------|----------------------|
+| 🔴 Sequential (1 at a time) | ~18 min | — | **~6-8 min ✅** |
+| 🟡 2-agent parallel | ~4 min | **~3 min ⚡** | — |
+| 🟢 **9-agent parallel (default)** | **~2 min ⚡** | ❌ | — |
 
----
+> 💡 **For local models** (Qwen3 1.7B, Llama, etc.): set `BRAIN_SEQUENTIAL=true` to run agents one at a time. Slower but works on any machine. A `run_local.sh` script is included.
+
+### Execution Flow
 
 ## 🎭 The 9 Intelligences
 

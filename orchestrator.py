@@ -104,6 +104,23 @@ INTELLIGENCE_EMOJIS = {
     "existential": "🌌",
 }
 
+# Timeouts configuráveis via env var (útil para modelos locais lentos)
+# Max tokens configuráveis via env var (reduzir para modelos locais lentos)
+AGENT_MAX_TOKENS = int(os.environ.get("BRAIN_AGENT_MAX_TOKENS", "16000"))
+SYNTHESIS_MAX_TOKENS = int(os.environ.get("BRAIN_SYNTHESIS_MAX_TOKENS", "16000"))
+AGENT_TIMEOUT = int(os.environ.get("BRAIN_AGENT_TIMEOUT", "90"))
+SYNTHESIS_TIMEOUT = int(os.environ.get("BRAIN_SYNTHESIS_TIMEOUT", "180"))
+
+# Permite rodar com subset de agentes (ex: BRAIN_AGENTS=linguistic,spatial,existential)
+_ENV_AGENTS = os.environ.get("BRAIN_AGENTS", "")
+if _ENV_AGENTS:
+    _filtered = [a.strip() for a in _ENV_AGENTS.split(",") if a.strip() in INTELLIGENCE_ORDER]
+    if _filtered:
+        INTELLIGENCE_ORDER = _filtered
+
+# Modo sequencial: roda um agente de cada vez (útil para modelos locais lentos)
+SEQUENTIAL = os.environ.get("BRAIN_SEQUENTIAL", "").lower() in ("1", "true", "yes", "sim")
+
 
 # ─── Utilitários ────────────────────────────────────────────────────────────
 
@@ -291,7 +308,7 @@ async def call_intelligence(
             {"role": "user", "content": question}
         ],
         "temperature": temperature,
-        "max_tokens": 16000,
+        "max_tokens": AGENT_MAX_TOKENS,
     }
 
     start = time.monotonic()
@@ -299,7 +316,7 @@ async def call_intelligence(
         async with session.post(
             f"{BASE_URL}/chat/completions",
             json=payload,
-            timeout=aiohttp.ClientTimeout(total=90)
+            timeout=aiohttp.ClientTimeout(total=AGENT_TIMEOUT)
         ) as resp:
             elapsed = time.monotonic() - start
             data = await resp.json()
@@ -401,14 +418,14 @@ async def synthesize(
             {"role": "user", "content": context}
         ],
         "temperature": 0.5,
-        'max_tokens': 16000,
+        'max_tokens': SYNTHESIS_MAX_TOKENS,
     }
 
     try:
         async with session.post(
             f'{BASE_URL}/chat/completions',
             json=payload,
-            timeout=aiohttp.ClientTimeout(total=180)
+            timeout=aiohttp.ClientTimeout(total=SYNTHESIS_TIMEOUT)
         ) as resp:
             data = await resp.json()
             if resp.status != 200:
@@ -438,16 +455,25 @@ async def main(question: str):
         print("❌ ERRO: OPENCODE_GO_API_KEY não encontrada no .env")
         sys.exit(1)
 
-    print("⏳ Disparando 9 inteligências em paralelo...\n")
+    mode_str = "em sequência" if SEQUENTIAL else "em paralelo"
+    print(f"⏳ Disparando {len(INTELLIGENCE_ORDER)} inteligências {mode_str}...\n")
     start_time = time.monotonic()
 
     async with aiohttp.ClientSession(headers=build_headers()) as session:
-        # Dispara todas as inteligências em paralelo
-        tasks = [
-            call_intelligence(session, intel_id, question)
-            for intel_id in INTELLIGENCE_ORDER
-        ]
-        responses = await asyncio.gather(*tasks)
+        # Dispara as inteligências
+        responses = []
+        if SEQUENTIAL:
+            for i, intel_id in enumerate(INTELLIGENCE_ORDER):
+                print(f"  [{i+1}/{len(INTELLIGENCE_ORDER)}] {INTELLIGENCE_EMOJIS.get(intel_id, '🧠')} {INTELLIGENCE_NAMES[intel_id]}... ", end="", flush=True)
+                result = await call_intelligence(session, intel_id, question)
+                print(f"({result['elapsed']})")
+                responses.append(result)
+        else:
+            tasks = [
+                call_intelligence(session, intel_id, question)
+                for intel_id in INTELLIGENCE_ORDER
+            ]
+            responses = await asyncio.gather(*tasks)
 
         # Mostra resultados parciais
         print(f"{'─'*60}")
@@ -480,7 +506,8 @@ async def main(question: str):
         print(f"⏱️  {elapsed:.1f}s • {successful}/9 inteligências\n")
         print(synthesis)
         print(f"\n{'─'*60}")
-        print(f"9 inteligências consultadas • Síntese integrativa • {elapsed:.1f}s")
+        mode_label = "em sequência" if SEQUENTIAL else "em paralelo"
+        print(f"{len(INTELLIGENCE_ORDER)} inteligências consultadas ({mode_label}) • Síntese integrativa • {elapsed:.1f}s")
         print(f"{'='*60}\n")
 
         # ─── Salva sessão ────────────────────────────────────────────────

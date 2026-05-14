@@ -150,6 +150,10 @@ def extract_content(msg: dict) -> tuple[str, str]:
 
     Returns: (resposta_limpa, finish_reason)
     """
+    # Robustez: se msg for string em vez de dict, converte
+    if isinstance(msg, str):
+        return msg, "stop"
+
     content = (msg.get("content") or "").strip()
     reasoning = (msg.get("reasoning_content") or "").strip()
     finish_reason = msg.get("finish_reason", "stop")
@@ -330,6 +334,15 @@ async def call_intelligence(
                     "status": "error",
                 }
 
+            if not data.get('choices') or not data['choices'][0].get('message'):
+                return {
+                    "id": intelligence_id,
+                    "name": f"{emoji} {name}",
+                    "response": "[Erro: resposta malformada da API]",
+                    "elapsed": f"{elapsed:.1f}s",
+                    "status": "error",
+                }
+
             content, finish_reason = extract_content(data["choices"][0]["message"])
 
             # Se finish_reason == "length" significa que o modelo não conseguiu
@@ -430,6 +443,9 @@ async def synthesize(
             data = await resp.json()
             if resp.status != 200:
                 return f'[Erro na síntese {resp.status}]: {data.get("error", {}).get("message", str(data)[:200])}'
+
+            if not data.get('choices') or not data['choices'][0].get('message'):
+                return f'[Erro na síntese: resposta malformada da API]'
 
             msg = data['choices'][0]['message']
             result, finish_reason = extract_content(msg)
